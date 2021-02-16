@@ -1,29 +1,30 @@
 from abc import ABC, abstractmethod
 
 from numpy import ndarray
+from numpy.typing import ArrayLike
 
 
-class CalcGraphNode(ABC):
+class CalcGraph(ABC):
     @abstractmethod
-    def get_parameters(self) -> ndarray:
+    def get_learnable_parameters(self) -> ndarray:
         """
         :return: An array of learnable parameters of node
         """
         pass
 
     @abstractmethod
-    def calc_grads(self, point: ndarray) -> ndarray:
+    def calc_grads(self, data: ArrayLike) -> ndarray:
         """
-        :param point: where grad is calculated
+        :param data: where grad is calculated
         :return: An array of gradient values. Shape of the return value is the same as the one returned from the
         GetParameters method
         """
         pass
 
     @abstractmethod
-    def calc_forward(self, point: ndarray) -> ndarray:
+    def calc_forward(self, data: ndarray) -> ndarray:
         """
-        :param point: where value is calculated
+        :param data: where value is calculated
         :return: An array with the results of forwarding pass
         """
         pass

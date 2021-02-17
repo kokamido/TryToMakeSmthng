@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Tuple, Any, Union, List
+from typing import Tuple, Callable, Any
 
 import numpy as np
 from numpy.typing import ArrayLike
@@ -25,3 +25,17 @@ class NumpyDataLoader(DataLoader):
         self.__current_index__ += batch_size
         return self.__data__[left: self.__current_index__,], self.__labels__[left: self.__current_index__]
 
+
+class GeneratorBasedLoader(DataLoader):
+
+    def __init__(self, generator_func: Callable[[], Tuple[Any, Any]]):
+        self.__generator_func__ = generator_func
+
+    def get_data_batch(self, batch_size: int) -> Tuple[ArrayLike, ArrayLike]:
+        data = []
+        target = []
+        for _ in range(batch_size):
+            current_data, current_target = self.__generator_func__()
+            data.append(current_data)
+            target.append(current_target)
+        return np.array(data), np.array(target)

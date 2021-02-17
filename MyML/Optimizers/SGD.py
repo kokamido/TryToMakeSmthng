@@ -24,4 +24,4 @@ class SGDOptimizer(Optimizer):
         loss_grads = np.tile(np.squeeze(loss_grads), (parameters_to_update.size, 1)).T
         grad *= loss_grads
         grad = grad.mean(axis=0)
-        parameters_to_update += self.__learning_rate__ * grad
+        parameters_to_update -= self.__learning_rate__ * grad

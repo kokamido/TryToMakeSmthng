@@ -19,7 +19,7 @@ class AbsoluteError(AbstractLoss):
         :return: scalar
         """
         actual_value, target_value = data
-        return np.sign(target_value - actual_value)
+        return np.sign(actual_value - target_value)
 
     def calc_forward(self, data: Tuple[ArrayLike, ArrayLike]) -> np.ndarray:
         """

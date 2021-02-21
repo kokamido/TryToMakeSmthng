@@ -1,10 +1,8 @@
 from abc import abstractmethod
-from typing import Tuple
 
 from numpy import ndarray
-from numpy.typing import ArrayLike
-
-from ..CalcGraph.AbstractGraph import CalcGraph
+from typing import Tuple
+from MyML.CalcGraph.AbstractGraph import CalcGraph
 
 
 class AbstractLoss(CalcGraph):
@@ -13,7 +11,7 @@ class AbstractLoss(CalcGraph):
         pass
 
     @abstractmethod
-    def calc_grads(self, data: Tuple[ArrayLike, ArrayLike]) -> ndarray:
+    def calc_grads(self, data: Tuple[ndarray, ndarray]) -> ndarray:
         """
             :param data: (actual_value, target_value)
             :return: scalar
@@ -21,7 +19,7 @@ class AbstractLoss(CalcGraph):
         pass
 
     @abstractmethod
-    def calc_forward(self, data: Tuple[ArrayLike, ArrayLike]) -> ndarray:
+    def calc_forward(self, data: Tuple[ndarray, ndarray]) -> ndarray:
         """
             :param data: (actual_value, target_value)
             :return: scalar

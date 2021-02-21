@@ -1,4 +1,4 @@
-from typing import Iterable
+from typing import Sequence
 
 import numpy as np
 
@@ -7,7 +7,7 @@ from MyML.CalcGraph.AbstractGraph import CalcGraph
 
 class LinearRegression(CalcGraph):
 
-    def __init__(self, shape: Iterable[int]):
+    def __init__(self, shape: Sequence[int]):
         weights_count = np.prod(shape) + 1
         self.__all_parameters__ = np.random.normal(size=weights_count)
         self.__bias__ = self.__all_parameters__[-1:]

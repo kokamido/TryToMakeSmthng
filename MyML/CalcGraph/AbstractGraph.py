@@ -8,7 +8,7 @@ class CalcGraph(ABC):
     @abstractmethod
     def get_learnable_parameters(self) -> ndarray:
         """
-        :return: An array of learnable parameters of node
+        :return: An array of learnable parameters of the node
         """
         pass
 

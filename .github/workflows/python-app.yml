@@ -19,5 +19,5 @@ jobs:
     - name: Test with pytest
       uses: onichandame/python-test-action@master
       with:
-        deps_list: requirements-dev.txt
+        deps_list: 'requirements-dev.txt'
 

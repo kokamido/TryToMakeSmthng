@@ -3,7 +3,6 @@
 
 import numpy as np
 from matplotlib import pyplot as plt
-from sklearn.datasets import make_regression
 
 from MyML.Algorithms.LinearRegression.LinearRegression import LinearRegression
 from MyML.DataPipelineTools.DataLoader import GeneratorBasedLoader

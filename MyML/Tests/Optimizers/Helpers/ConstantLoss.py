@@ -10,7 +10,7 @@ class ConstantLoss(AbstractLoss):
     Stub for test cases. Provides constant grads and losses.
     """
 
-    def __init(self, grads_value: float, loss_value: float):
+    def __init__(self, grads_value: float, loss_value: float):
         self.__grads_value__ = grads_value
         self.__loss_value__ = loss_value
 

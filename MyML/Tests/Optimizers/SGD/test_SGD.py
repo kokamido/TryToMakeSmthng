@@ -4,8 +4,8 @@ from numpy.testing import assert_array_almost_equal
 
 from MyML.DataPipelineTools.DataLoader import GeneratorBasedLoader
 from MyML.Optimizers.SGD import SGDOptimizer
-from MyML.Tests.Optimizers.Helpers.ConstantLoss import ConstantLoss
-from MyML.Tests.Optimizers.Helpers.SingleDirectionGradsStub import (
+from MyML.Helpers.TestHelpers.ConstantLoss import ConstantLoss
+from MyML.Helpers.TestHelpers.SingleDirectionGradsStub import (
     SingleDirectionGradsStub,
 )
 

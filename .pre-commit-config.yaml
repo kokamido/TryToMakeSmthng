@@ -1,0 +1,10 @@
+repos:
+-   repo: https://github.com/ambv/black
+    rev: stable
+    hooks:
+    - id: black
+      language_version: python3.9
+-   repo: https://github.com/pre-commit/mirrors-mypy
+    rev: b84ce099a2fd3c5216b6ccf3fd176c3828b075fb
+    hooks:
+    -   id: mypy

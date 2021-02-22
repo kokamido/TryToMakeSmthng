@@ -4,7 +4,6 @@ from .AbstractLoss import AbstractLoss
 
 
 class AbsoluteError(AbstractLoss):
-
     def get_learnable_parameters(self) -> ndarray:
         """
         Absolute error loss has no learnable parameters"

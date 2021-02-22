@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+
 from ..CalcGraph.AbstractGraph import CalcGraph
 from ..DataPipelineTools.DataLoader import DataLoader
 from ..Losses.AbstractLoss import AbstractLoss

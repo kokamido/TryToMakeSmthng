@@ -1,11 +1,10 @@
 import numpy as np
 
-from .Optimizer import Optimizer
 from ..CalcGraph.AbstractGraph import CalcGraph
 from ..DataPipelineTools.DataLoader import DataLoader
-from ..Losses.AbstractLoss import AbstractLoss
-
 from ..Helpers.NpExtensions.AxisHelpers import add_axis_if_1d
+from ..Losses.AbstractLoss import AbstractLoss
+from .Optimizer import Optimizer
 
 
 class SGDOptimizer(Optimizer):

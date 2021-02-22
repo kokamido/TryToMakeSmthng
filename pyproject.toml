@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "myml-poetry"
+version = "0.0.1"
+description = "Just trying to make some thing and learn some ml"
+authors = ["Alexander Pankratov <alexandrpankratov9@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+numpy = "^1.20.0"
+pre-commit = "^2.10.1"
+black = {version = "*", optional= true}
+isort = {version = "*", optional= true}
+mypy = {version = "*", optional= true}
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+
+[tool.potery.extras]
+format = ["isort", "black"]

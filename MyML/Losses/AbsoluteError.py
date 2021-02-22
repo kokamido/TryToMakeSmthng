@@ -1,5 +1,7 @@
-from numpy import ndarray, sign, abs
 from typing import Tuple
+
+from numpy import abs, ndarray, sign
+
 from .AbstractLoss import AbstractLoss
 
 

@@ -1,7 +1,8 @@
 from abc import abstractmethod
+from typing import Tuple
 
 from numpy import ndarray
-from typing import Tuple
+
 from MyML.CalcGraph.AbstractGraph import CalcGraph
 
 

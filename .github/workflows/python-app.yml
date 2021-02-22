@@ -15,8 +15,15 @@ jobs:
     - uses: actions/setup-python@v2
       with:
         python-version: '3.9'
+    - run: |
+        pip install -U pip
+        pip install poetry
+        poetry install
+        poetry export -f requirements.txt --output requirements.txt
+      env:
+        POETRY_VIRTUALENVS_CREATE: false
     - name: Test with pytest
       uses: onichandame/python-test-action@master
       with:
-        deps_list: 'requirements-dev.txt'
+        deps_list: 'requirements.txt'
 

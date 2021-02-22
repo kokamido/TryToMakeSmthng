@@ -1,12 +1,11 @@
 import unittest
+
 import numpy as np
 
 from MyML.DataPipelineTools.DataLoader import GeneratorBasedLoader
-from MyML.Optimizers.SGD import SGDOptimizer
 from MyML.Helpers.TestHelpers.ConstantLoss import ConstantLoss
-from MyML.Helpers.TestHelpers.SingleDirectionGradsStub import (
-    SingleDirectionGradsStub,
-)
+from MyML.Helpers.TestHelpers.SingleDirectionGradsStub import SingleDirectionGradsStub
+from MyML.Optimizers.SGD import SGDOptimizer
 
 
 class SGDTests(unittest.TestCase):

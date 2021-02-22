@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Union, Sequence, Tuple
+from typing import Sequence, Tuple, Union
 
 from numpy import ndarray
 

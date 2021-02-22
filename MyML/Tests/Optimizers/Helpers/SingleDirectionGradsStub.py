@@ -8,7 +8,7 @@ from MyML.CalcGraph.AbstractGraph import CalcGraph
 
 class SingleDirectionGradsStub(CalcGraph):
     """
-       Stub for test cases. Provides constant grads and values.
+    Stub for test cases. Provides constant grads and values.
     """
 
     def __init__(self, shape: Sequence[int], grad_value: float, forward_value: float):

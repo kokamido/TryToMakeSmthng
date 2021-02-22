@@ -6,7 +6,6 @@ from MyML.CalcGraph.AbstractGraph import CalcGraph
 
 
 class LinearRegression(CalcGraph):
-
     def __init__(self, shape: Sequence[int]):
         weights_count = np.prod(shape) + 1
         self.__all_parameters__ = np.random.normal(size=weights_count)

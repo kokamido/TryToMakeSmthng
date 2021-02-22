@@ -13,11 +13,13 @@ from MyML.Optimizers.SGD import SGDOptimizer
 dim = 3
 weights = np.random.normal(size=dim)
 
-def get_data():
-    point = np.random.normal(size=dim-1)
-    return point, np.dot(point, weights[:-1])+weights[-1]
 
-reg = LinearRegression(([dim-1]))
+def get_data():
+    point = np.random.normal(size=dim - 1)
+    return point, np.dot(point, weights[:-1]) + weights[-1]
+
+
+reg = LinearRegression(([dim - 1]))
 loader = GeneratorBasedLoader(get_data)
 loss = AbsoluteError()
 opt = SGDOptimizer(0.001, 10)

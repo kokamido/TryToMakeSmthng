@@ -13,15 +13,15 @@ class AbstractLoss(CalcGraph):
     @abstractmethod
     def calc_grads(self, data: Tuple[ndarray, ndarray]) -> ndarray:
         """
-            :param data: (actual_value, target_value)
-            :return: scalar
+        :param data: (actual_value, target_value)
+        :return: scalar
         """
         pass
 
     @abstractmethod
     def calc_forward(self, data: Tuple[ndarray, ndarray]) -> ndarray:
         """
-            :param data: (actual_value, target_value)
-            :return: scalar
+        :param data: (actual_value, target_value)
+        :return: scalar
         """
         pass

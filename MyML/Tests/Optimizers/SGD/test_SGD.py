@@ -19,7 +19,7 @@ class SGDTests(unittest.TestCase):
         parameters = node.get_learnable_parameters()
         for _ in range(100):
             optimizer.update_node_parameters(node, loss, data_loader)
-        np.testing.assert_array_almost_equal(parameters, [-12.0, -1.0, -1.0], 0.0001)
+        np.testing.assert_array_almost_equal(parameters, [-1.0, -1.0, -1.0], 0.0001)
 
 
 if __name__ == "__main__":

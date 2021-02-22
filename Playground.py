@@ -2,7 +2,6 @@
 
 
 import numpy as np
-from matplotlib import pyplot as plt
 
 from MyML.Algorithms.LinearRegression.LinearRegression import LinearRegression
 from MyML.DataPipelineTools.DataLoader import GeneratorBasedLoader
@@ -27,4 +26,3 @@ while np.sum(np.abs(weights - params)) > 0.01:
     opt.update_node_parameters(reg, loss, loader)
 print(reg.get_learnable_parameters())
 print(weights)
-plt.show()

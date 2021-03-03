@@ -13,7 +13,7 @@ class LinearRegression(CalcGraph):
         self.__weights__ = self.__all_parameters__[:-1]
 
     def calc_grads(self, data: np.ndarray) -> np.ndarray:
-        return np.concatenate((data.copy(), [1]))
+        return np.concatenate((data.copy(), [1])).T
 
     def calc_forward(self, data: np.ndarray) -> np.ndarray:
         return np.dot(self.__weights__, data) + self.__bias__

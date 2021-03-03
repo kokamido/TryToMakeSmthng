@@ -29,14 +29,16 @@ class SGDOptimizer(Optimizer):
         grad = add_axis_if_1d(grad)
         if self.__norm_grad__:
             grad /= np.linalg.norm(grad)
-        predicted_values = np.squeeze(
-            np.apply_along_axis(graph_node.calc_forward, -1, data_to_calc_grads)
+        predicted_values = add_axis_if_1d(
+            np.squeeze(
+                np.apply_along_axis(graph_node.calc_forward, -1, data_to_calc_grads)
+            )
         )
         loss_grads = np.apply_along_axis(
             loss.calc_grads, -1, np.dstack((predicted_values, labels))
         )
         loss_grads = add_axis_if_1d(loss_grads)
-        loss_grads = np.tile(np.squeeze(loss_grads), (parameters_to_update.size, 1)).T
+        loss_grads = np.ones_like(grad) * loss_grads
         grad *= loss_grads
         grad = grad.mean(axis=0)
         parameters_to_update -= self.__learning_rate__ * grad

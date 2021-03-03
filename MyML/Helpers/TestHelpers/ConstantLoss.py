@@ -21,16 +21,16 @@ class ConstantLoss(AbstractLoss):
         """
         raise NotImplementedError("ConstantLoss error loss has no learnable parameters")
 
-    def calc_grads(self, data: Tuple[np.ndarray, np.ndarray]) -> np.ndarray:
+    def calc_grads(self, data: Tuple[np.ndarray, np.ndarray]) -> float:
         """
         :param data: (actual_value, target_value), scalars
         :return: np.ones(data[1].shape)
         """
-        return np.ones(data[1].shape) * self.__grads_value__
+        return self.__grads_value__
 
-    def calc_forward(self, data: Tuple[np.ndarray, np.ndarray]) -> np.ndarray:
+    def calc_forward(self, data: Tuple[np.ndarray, np.ndarray]) -> float:
         """
         :param data: (actual_value, target_value), scalars
         :return: np.ones(data[1].shape)
         """
-        return np.ones(data[1].shape) * self.__loss_value__
+        return self.__loss_value__

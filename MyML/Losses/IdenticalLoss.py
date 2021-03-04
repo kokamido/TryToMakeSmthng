@@ -1,8 +1,8 @@
-from typing import Tuple
+from typing import Any, Tuple
 
 from numpy import ndarray
 
-from MyML.Losses.AbstractLoss import LOSS_OUT, AbstractLoss
+from MyML.Losses.AbstractLoss import AbstractLoss
 
 
 class IdenticalLoss(AbstractLoss):
@@ -13,14 +13,14 @@ class IdenticalLoss(AbstractLoss):
         """
         raise NotImplementedError("Absolute error loss has no learnable parameters")
 
-    def calc_grads(self, data: Tuple[ndarray, ndarray]) -> LOSS_OUT:
+    def calc_grads(self, data: Tuple[Any, Any]) -> float:
         """
         :param data: (actual_value, target_value), scalars
         :return: scalar
         """
-        return 1
+        return 1.0
 
-    def calc_forward(self, data: Tuple[LOSS_OUT, LOSS_OUT]) -> LOSS_OUT:
+    def calc_forward(self, data: Tuple[float, float]) -> float:
         """
         :param data: (actual_value, target_value), scalars
         :return: np.abs(actual_value - target_value)

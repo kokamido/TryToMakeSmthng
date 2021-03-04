@@ -35,8 +35,7 @@ class SGDOptimizer(Optimizer):
         loss_grads = np.apply_along_axis(
             loss.calc_grads, -1, np.dstack((predicted_values, labels))
         )
-        loss_grads = add_axis_if_1d(loss_grads)
-        loss_grads = np.ones_like(grad) * loss_grads
-        grad *= loss_grads
+        grad_shape = grad.shape
+        grad = (grad.reshape((grad_shape[0], -1)) * loss_grads).reshape(grad_shape)
         grad = grad.mean(axis=0)
         parameters_to_update -= self.__learning_rate__ * grad

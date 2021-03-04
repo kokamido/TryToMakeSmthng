@@ -2,7 +2,7 @@ from typing import Tuple
 
 from numpy import abs, ndarray, sign
 
-from .AbstractLoss import LOSS_OUT, AbstractLoss
+from .AbstractLoss import AbstractLoss
 
 
 class AbsoluteError(AbstractLoss):
@@ -13,7 +13,7 @@ class AbsoluteError(AbstractLoss):
         """
         raise NotImplementedError("Absolute error loss has no learnable parameters")
 
-    def calc_grads(self, data: Tuple[ndarray, ndarray]) -> LOSS_OUT:
+    def calc_grads(self, data: Tuple[ndarray, ndarray]) -> float:
         """
         :param data: (actual_value, target_value), scalars
         :return: scalar
@@ -21,7 +21,7 @@ class AbsoluteError(AbstractLoss):
         actual_value, target_value = data
         return sign(actual_value - target_value)
 
-    def calc_forward(self, data: Tuple[ndarray, ndarray]) -> LOSS_OUT:
+    def calc_forward(self, data: Tuple[ndarray, ndarray]) -> float:
         """
         :param data: (actual_value, target_value), scalars
         :return: np.abs(actual_value - target_value)

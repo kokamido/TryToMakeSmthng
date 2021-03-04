@@ -35,7 +35,7 @@ class SGDTests(unittest.TestCase):
             optimizer.update_node_parameters(node, loss, data_loader)
         np.testing.assert_array_almost_equal(parameters, [-1.0, -1.0, -1.0], 0.0001)
 
-    def test_SGD_random_data_shapes(self):
+    def test_SGD_random_data_shapes_batch_size_1(self):
         for _ in range(50):
             shape = []
             for _ in range(np.random.randint(low=1, high=8)):
@@ -44,6 +44,21 @@ class SGDTests(unittest.TestCase):
             loss = ConstantLoss(grads_value=1, loss_value=1)
             optimizer = SGDOptimizer(0.01, 1)
             data_loader = GeneratorBasedLoader(generator_func=lambda: (1, 1))
+            parameters = node.get_learnable_parameters()
+            for _ in range(100):
+                optimizer.update_node_parameters(node, loss, data_loader)
+            delta = np.sum(np.abs(parameters - np.ones(shape=shape) * (-1)).ravel())
+            self.assertAlmostEqual(delta, 0, delta=1e-6)
+
+    def test_SGD_random_data_shapes_batch_size_10(self):
+        for _ in range(50):
+            shape = []
+            for _ in range(np.random.randint(low=1, high=8)):
+                shape.append(np.random.randint(low=2, high=10))
+            node = SingleDirectionGradsStub(shape=shape, grad_value=2, forward_value=2)
+            loss = ConstantLoss(grads_value=1, loss_value=1)
+            optimizer = SGDOptimizer(0.01, 10)
+            data_loader = GeneratorBasedLoader(generator_func=lambda: ([1], [1]))
             parameters = node.get_learnable_parameters()
             for _ in range(100):
                 optimizer.update_node_parameters(node, loss, data_loader)
@@ -105,7 +120,7 @@ class SGDTests(unittest.TestCase):
             reg = LinearRegression(([dim - 1]))
             loader = GeneratorBasedLoader(get_data)
             loss = AbsoluteError()
-            opt = SGDOptimizer(0.001, 10)
+            opt = SGDOptimizer(0.001, 25)
             params = reg.get_learnable_parameters()
             iter_num = 0
             while np.sum(np.abs(weights - params)) > 0.01:

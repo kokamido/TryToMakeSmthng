@@ -87,7 +87,7 @@ class SGDTests(unittest.TestCase):
                 if iter_num == 50000:
                     self.assertTrue(
                         False,
-                        "Beale function minimum search with SGD takes too long time to converge",
+                        "Beale function optimization with SGD takes too long time to converge",
                     )
                 optimizer.update_node_parameters(func, loss, data_loader)
                 func.point = point

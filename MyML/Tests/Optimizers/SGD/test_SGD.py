@@ -5,7 +5,7 @@ import numpy as np
 from MyML.Algorithms.LinearRegression.LinearRegression import LinearRegression
 from MyML.DataPipelineTools.DataLoader import GeneratorBasedLoader, StubDataLoader
 from MyML.Helpers.TestHelpers.ConstantLoss import ConstantLoss
-from MyML.Helpers.TestHelpers.OptimizationTestFunc import SphereFunc
+from MyML.Helpers.TestHelpers.OptimizationTestFunc import BealeFunc, SphereFunc
 from MyML.Helpers.TestHelpers.SingleDirectionGradsStub import SingleDirectionGradsStub
 from MyML.Losses.AbsoluteError import AbsoluteError
 from MyML.Losses.IdenticalLoss import IdenticalLoss
@@ -69,6 +69,28 @@ class SGDTests(unittest.TestCase):
                     )
                 optimizer.update_node_parameters(sphere_func, loss, data_loader)
                 sphere_func.point = point
+            self.assertTrue(True)
+
+    def test_SGD_Beale_func_optimization(self):
+        for _ in range(10):
+            noise = np.random.uniform(low=-0.75, high=0.75, size=2)
+            start_point = np.array([3.0, 0.5], dtype=np.float128) + noise
+            end_point = np.array([3.0, 0.5], dtype=np.float128)
+            func = BealeFunc(start_point)
+            optimizer = SGDOptimizer(0.01, 1)
+            loss = IdenticalLoss()
+            data_loader = StubDataLoader()
+            point = func.get_learnable_parameters()
+            iter_num = 0
+            while np.sum(np.abs(point - end_point)) > 1e-2:
+                iter_num += 1
+                if iter_num == 50000:
+                    self.assertTrue(
+                        False,
+                        "Beale function minimum search with SGD takes too long time to converge",
+                    )
+                optimizer.update_node_parameters(func, loss, data_loader)
+                func.point = point
             self.assertTrue(True)
 
     def test_SGD_with_linear_regression_1d_data(self):

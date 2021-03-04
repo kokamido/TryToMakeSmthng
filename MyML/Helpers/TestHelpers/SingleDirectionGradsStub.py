@@ -19,7 +19,7 @@ class SingleDirectionGradsStub(CalcGraph):
         return self.__parameters__
 
     def calc_grads(self, data: np.ndarray) -> np.ndarray:
-        return (np.ones(self.__parameters__.shape) * self.__grad_value__)[None, :]
+        return np.ones(self.__parameters__.shape) * self.__grad_value__
 
     def calc_forward(self, data: np.ndarray) -> np.ndarray:
         return np.ones(data.shape[0]) * self.__forward_value__

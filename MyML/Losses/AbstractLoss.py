@@ -1,12 +1,12 @@
 from abc import abstractmethod
-from typing import Tuple, Union
+from typing import Any, Tuple, Union
 
 from numpy import ndarray
 from numpy.typing import NBitBase
 
 from MyML.CalcGraph.AbstractGraph import CalcGraph
 
-LOSS_RETURN = Union[float, NBitBase]
+LOSS_OUT = Union[float, NBitBase]
 
 
 class AbstractLoss(CalcGraph):
@@ -15,7 +15,7 @@ class AbstractLoss(CalcGraph):
         pass
 
     @abstractmethod
-    def calc_grads(self, data: Tuple[ndarray, ndarray]) -> LOSS_RETURN:
+    def calc_grads(self, data: Tuple[Any, Any]) -> LOSS_OUT:
         """
         :param data: (actual_value, target_value)
         :return: scalar
@@ -23,7 +23,7 @@ class AbstractLoss(CalcGraph):
         pass
 
     @abstractmethod
-    def calc_forward(self, data: Tuple[ndarray, ndarray]) -> LOSS_RETURN:
+    def calc_forward(self, data: Tuple[Any, Any]) -> LOSS_OUT:
         """
         :param data: (actual_value, target_value)
         :return: scalar

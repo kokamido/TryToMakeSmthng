@@ -12,6 +12,7 @@ black = {version = "*", optional= true}
 flake8 = {version = "*", optional= true}
 isort = {version = "*", optional= true}
 mypy = {version = "*", optional= true}
+matplotlib = {version = "*"}
 
 [tool.isort]
 profile = "black"

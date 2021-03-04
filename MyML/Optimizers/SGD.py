@@ -23,9 +23,7 @@ class SGDOptimizer(Optimizer):
             add_axis_if_1d, data.get_data_batch(self.__max_batch_size__)
         )
 
-        grad = np.squeeze(
-            np.apply_along_axis(graph_node.calc_grads, -1, data_to_calc_grads)
-        )
+        grad = np.apply_along_axis(graph_node.calc_grads, -1, data_to_calc_grads)
         grad = add_axis_if_1d(grad)
         if self.__norm_grad__:
             grad /= np.linalg.norm(grad)

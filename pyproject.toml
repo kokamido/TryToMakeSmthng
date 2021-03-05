@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "myml-poetry"
 version = "0.0.1"
-description = "Just trying to make some thing and learn some ml"
+description = "Try to understand and code basic ml-related concepts"
 authors = ["Alexander Pankratov <alexandrpankratov9@gmail.com>"]
 
 [tool.poetry.dependencies]

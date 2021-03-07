@@ -1,13 +1,13 @@
 import numpy as np
 
-from ..CalcGraph.AbstractGraph import CalcGraph
-from ..DataPipelineTools.DataLoader import DataLoader
-from ..Helpers.NpExtensions.AxisHelpers import add_axis_if_1d
-from ..Losses.AbstractLoss import AbstractLoss
-from .Optimizer import Optimizer
+from MyML.CalcGraph.AbstractGraph import CalcGraph
+from MyML.DataPipelineTools.DataLoader import DataLoader
+from MyML.Helpers.NpExtensions.AxisHelpers import add_axis_if_1d
+from MyML.Losses.AbstractLoss import AbstractLoss
+from MyML.Optimizers.Optimizer import Optimizer
 
 
-class SGDOptimizer(Optimizer):
+class BatchGradientOptimizer(Optimizer):
     def __init__(
         self, learning_rate: float, max_batch_size: int, norm_grad: bool = False
     ):

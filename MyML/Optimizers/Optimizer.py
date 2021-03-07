@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 
-from ..CalcGraph.AbstractGraph import CalcGraph
-from ..DataPipelineTools.DataLoader import DataLoader
-from ..Losses.AbstractLoss import AbstractLoss
+from MyML.CalcGraph.AbstractGraph import CalcGraph
+from MyML.DataPipelineTools.DataLoader import DataLoader
+from MyML.Losses.AbstractLoss import AbstractLoss
 
 
 class Optimizer(ABC):

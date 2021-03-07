@@ -5,11 +5,11 @@ import numpy as np
 from MyML.Algorithms.LinearRegression.LinearRegression import LinearRegression
 from MyML.DataPipelineTools.DataLoader import GeneratorBasedLoader
 from MyML.Losses.AbsoluteError import AbsoluteError
-from MyML.Optimizers.SGD import SGDOptimizer
+from MyML.Optimizers.BatchGradientOptimizer import BatchGradientOptimizer
 
 
 class SGDTests(unittest.TestCase):
-    def test_linear_regression_SGD_with(self):
+    def test_linear_regression_BatchGradientOptimizer_with(self):
         for _ in range(10):
             dim = np.random.randint(low=1, high=25)
             weights = np.random.normal(size=dim)
@@ -21,7 +21,7 @@ class SGDTests(unittest.TestCase):
             reg = LinearRegression(([dim - 1]))
             loader = GeneratorBasedLoader(get_data)
             loss = AbsoluteError()
-            opt = SGDOptimizer(0.001, 25)
+            opt = BatchGradientOptimizer(0.001, 25)
             params = reg.get_learnable_parameters()
             iter_num = 0
             while np.sum(np.abs(weights - params)) > 0.01:

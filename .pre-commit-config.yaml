@@ -1,0 +1,21 @@
+repos:
+-   repo: https://github.com/pre-commit/mirrors-isort
+    rev: 45886b75933e6460aa4883fc9b93452528d4384b
+    hooks:
+        - id: isort
+
+-   repo: https://github.com/ambv/black
+    rev: cd4295dd9888f491cfd9aae060d7832b7f831b24
+    hooks:
+    - id: black
+      language_version: python3.9
+
+-   repo: https://github.com/pre-commit/mirrors-mypy
+    rev: b84ce099a2fd3c5216b6ccf3fd176c3828b075fb
+    hooks:
+    -   id: mypy
+
+-   repo: https://gitlab.com/pycqa/flake8
+    rev: 6de8252c035844f1e679f509b5f37340b44d5c39
+    hooks:
+    -   id: flake8
